@@ -8,11 +8,11 @@ read IP
 pass=$(doveadm pw -u $name -p $password -s SHA256-CRYPT)
 ( echo "INSERT INTO users (name, password, path, uid, gid)" ; 
 echo ; 
-echo "VALUES('$name','$pass','/home/vbox/positron.pl','5000','5000');" ; 
+echo "VALUES('$name','$pass','/home/vbox/domain.pl','5000','5000');" ; 
 echo ; 
-echo "\q" ) | psql postgres://agent:agent@$IP:5432/poczta
+echo "\q" ) | psql postgres://user:passwd@$IP:5432/dbname
 ( echo "INSERT INTO vboxes (mail, path)" ; 
 echo ; 
-echo "VALUES('$name@positron.pl','positron.pl/$name/');" ; 
+echo "VALUES('$name@domain.pl','domain.pl/$name/');" ; 
 echo ; 
-echo "\q" ) | psql postgres://agent:agent@$IP:5432/poczta
+echo "\q" ) | psql postgres://user:passwd@$IP:5432/dbname
